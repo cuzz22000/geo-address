@@ -1,0 +1,102 @@
+{
+  "results": [
+    {
+      "address_components": [
+        {
+          "long_name": "777",
+          "short_name": "777",
+          "types": [
+            "street_number"
+          ]
+        },
+        {
+          "long_name": "Brockton Avenue",
+          "short_name": "Brockton Ave",
+          "types": [
+            "route"
+          ]
+        },
+        {
+          "long_name": "Abington",
+          "short_name": "Abington",
+          "types": [
+            "locality",
+            "political"
+          ]
+        },
+        {
+          "long_name": "Plymouth County",
+          "short_name": "Plymouth County",
+          "types": [
+            "administrative_area_level_2",
+            "political"
+          ]
+        },
+        {
+          "long_name": "Massachusetts",
+          "short_name": "MA",
+          "types": [
+            "administrative_area_level_1",
+            "political"
+          ]
+        },
+        {
+          "long_name": "United States",
+          "short_name": "US",
+          "types": [
+            "country",
+            "political"
+          ]
+        },
+        {
+          "long_name": "02351",
+          "short_name": "02351",
+          "types": [
+            "postal_code"
+          ]
+        },
+        {
+          "long_name": "2142",
+          "short_name": "2142",
+          "types": [
+            "postal_code_suffix"
+          ]
+        }
+      ],
+      "formatted_address": "777 Brockton Ave, Abington, MA 02351, USA",
+      "geometry": {
+        "bounds": {
+          "northeast": {
+            "lat": 42.0968091,
+            "lng": -70.9677402
+          },
+          "southwest": {
+            "lat": 42.0957465,
+            "lng": -70.96943499999999
+          }
+        },
+        "location": {
+          "lat": 42.0963462,
+          "lng": -70.9686115
+        },
+        "location_type": "ROOFTOP",
+        "viewport": {
+          "northeast": {
+            "lat": 42.0976267802915,
+            "lng": -70.96723861970848
+          },
+          "southwest": {
+            "lat": 42.0949288197085,
+            "lng": -70.96993658029149
+          }
+        }
+      },
+      "partial_match": true,
+      "place_id": "ChIJmf-3TW6b5IkR1rx0eohvqPQ",
+      "types": [
+        "premise"
+      ]
+    }
+  ],
+  "status": "OK"
+}

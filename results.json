@@ -80,6 +80,14 @@
 		}
 	},
 	{
+		"address": "121 Worcester Rd, Framingham MA 1701",
+		"status": "FOUND",
+		"location": {
+			"lat": -71.39969359999999,
+			"lng": 42.3008375
+		}
+	},
+	{
 		"address": "677 Timpany Blvd, Gardner MA 1440",
 		"status": "FOUND",
 		"location": {
@@ -408,11 +416,27 @@
 		}
 	},
 	{
+		"address": "30 Catskill, Catskill NY 12414",
+		"status": "FOUND",
+		"location": {
+			"lat": -73.88288630000001,
+			"lng": 42.2124896
+		}
+	},
+	{
 		"address": "161 Centereach Mall, Centereach NY 11720",
 		"status": "FOUND",
 		"location": {
 			"lat": -73.0812935,
 			"lng": 40.8630257
+		}
+	},
+	{
+		"address": "3018 East Ave, Central Square NY 13036",
+		"status": "FOUND",
+		"location": {
+			"lat": -76.1273069,
+			"lng": 43.2913212
 		}
 	},
 	{
@@ -701,6 +725,14 @@
 		"location": {
 			"lat": -74.3292871,
 			"lng": 44.84519239999999
+		}
+	},
+	{
+		"address": "200 Sunrise Mall, Massapequa NY 11758",
+		"status": "FOUND",
+		"location": {
+			"lat": -73.4337443,
+			"lng": 40.68327960000001
 		}
 	},
 	{
@@ -1053,6 +1085,14 @@
 		"location": {
 			"lat": -85.97202229999999,
 			"lng": 32.934356
+		}
+	},
+	{
+		"address": "540 West Bypass, Andalusia AL 36420",
+		"status": "FOUND",
+		"location": {
+			"lat": -86.501071,
+			"lng": 31.304725
 		}
 	},
 	{

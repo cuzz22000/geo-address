@@ -98,7 +98,7 @@ public class App {
         public String status() {
           if (status.equals("OK")) {
             return "FOUND";
-          } else if (status.equals("OVER_QUERY_LIMIT")) {
+          } else if (status.equals("OVER_QUERY_LIMIT") || status.equals("UNKNOWN_ERROR")) {
             return status;
           }
           return "NOT_FOUND";
@@ -127,10 +127,12 @@ public class App {
         new GeoCode<GeoAddressLocation>(address).useLocationFactory(locationFactory);
     for (int i = 0; i < 5; i++) {
       final GeoAddressLocation location = geoCode.locate();
-      if (!location.status().equals("FOUND")) {
+      if (!location.status().equals("FOUND") && !location.status().equals("NOT_FOUND")) {
         System.out.printf("Attempt %d resolving address %s failed with status %s... retrying\n",
             i + 1, address, location.status());
-        if (location.status().equals("OVER_QUERY_LIMIT")) {
+        if (i++ == 5) {
+          return Optional.of(location);
+        } else if (location.status().equals("OVER_QUERY_LIMIT")) {
           System.out.println("Over Query Limit resetting count.. sleeping it off!");
           i = 0;
           try {

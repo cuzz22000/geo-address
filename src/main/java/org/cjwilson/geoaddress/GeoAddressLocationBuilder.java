@@ -75,7 +75,7 @@ public class GeoAddressLocationBuilder {
 
       @Override
       public String address() {
-        return address != null ? address : formattedAddress;
+        return formattedAddress != null ? formattedAddress : address;
       }
     };
   }

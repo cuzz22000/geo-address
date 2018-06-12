@@ -47,7 +47,7 @@ $> java -jar target/geo-address-0.0.1.jar -a "777 Brockton Avenue, Abington MA 2
 {"address":"777 Brockton Avenue, Abington MA 2351","status":"FOUND","location":{"lat":-70.9686115,"lng":42.0963462}}
 
 # List of address
-$> java -jar target/geo-address-0.0.1.jar -f "path to file"
+$> java -jar target/geo-address-0.0.1.jar -f src/test/resources/addresses.txt
 
 ....
 
@@ -78,7 +78,7 @@ It was observed that the service will respond with a status of "OK" and provide 
 
 Example of Not Found:
 
-```
+```bash
 $> java -jar target/geo-address-0.0.1.jar -a "1313 Mockingbird Lane, The Moon MA 2350"
 {"address":"1313 Mockingbird Lane, The Moon MA 2350","status":"NOT_FOUND","location":{"lat":0.0,"lng":0.0}}
 ```

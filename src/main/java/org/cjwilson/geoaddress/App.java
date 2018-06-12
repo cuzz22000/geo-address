@@ -7,8 +7,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Optional;
 
-import javax.json.JsonObject;
-
 import org.cjwilson.geoaddress.google.GeoCode;
 import org.cjwilson.geoaddress.google.GeoCodeException;
 import org.cjwilson.geoaddress.google.GeoCodeLocationFactory;
@@ -81,45 +79,7 @@ public class App {
       throws GeoCodeException {
 
     final GeoCodeLocationFactory<GeoAddressLocation> locationFactory = (jsonObj) -> {
-      final String status = jsonObj.getString("status");
-      final JsonObject location = status.equals("OK")
-          ? jsonObj.get("results").asJsonArray().get(0).asJsonObject().get("geometry")
-              .asJsonObject().get("location").asJsonObject()
-          : null;
-
-      return new GeoAddressLocation() {
-
-        @Override
-        public JsonObject locationJsonObj() {
-          return null;
-        }
-
-        @Override
-        public String status() {
-          if (status.equals("OK")) {
-            return "FOUND";
-          } else if (status.equals("OVER_QUERY_LIMIT") || status.equals("UNKNOWN_ERROR")) {
-            return status;
-          }
-          return "NOT_FOUND";
-        }
-
-        @Override
-        public Double lng() {
-          return status.equals("OK") ? location.getJsonNumber("lat").doubleValue() : 0d;
-        }
-
-        @Override
-        public Double lat() {
-          return status.equals("OK") ? location.getJsonNumber("lng").doubleValue() : 0d;
-        }
-
-        @Override
-        public String address() {
-          return address;
-        }
-      };
-
+      return GeoAddressLocationBuilder.newBuilder(jsonObj).withAddress(address).build();
 
     };
 
@@ -131,33 +91,8 @@ public class App {
         System.out.printf("Attempt %d resolving address %s failed with status %s... retrying\n",
             i + 1, address, location.status());
         if (i + 1 == 5) {
-          return Optional.of(new GeoAddressLocation() {
-
-            @Override
-            public JsonObject locationJsonObj() {
-              return null;
-            }
-
-            @Override
-            public String status() {
-              return "NOT_FOUND";
-            }
-
-            @Override
-            public Double lng() {
-              return 0d;
-            }
-
-            @Override
-            public Double lat() {
-              return 0d;
-            }
-
-            @Override
-            public String address() {
-              return location.address();
-            }
-          });
+          return Optional.of(GeoAddressLocationBuilder.newBuilder(location.locationJsonObj())
+              .withAddress(location.address()).withStatus("NOT_FOUND").build());
         } else if (location.status().equals("OVER_QUERY_LIMIT")) {
           System.out.println("Over Query Limit resetting count.. sleeping it off!");
           i = 0;

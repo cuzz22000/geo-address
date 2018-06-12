@@ -57,7 +57,7 @@ $>
 
 ### Test Cases
 
-There is fairly good coverage, of course there can alway be more. Special note should be taken the most tests in `org.cjwilson.geoaddress.AppTest` are being ignored. As these are live tests calling the actual service. Future version may introduce Mokito for better coverage.
+There is fairly good coverage, of course there can alway be more. Special note should be taken all but one test in `org.cjwilson.geoaddress.AppTest` are being ignored. As these are live tests calling the actual service. Future version may introduce Mokito for better coverage.
 
 ### Annoyances and Shortcomings
 

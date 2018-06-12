@@ -106,12 +106,12 @@ public class App {
 
         @Override
         public Double lng() {
-          return status.equals("OK") ? location.getJsonNumber("lat").doubleValue() : 0;
+          return status.equals("OK") ? location.getJsonNumber("lat").doubleValue() : 0d;
         }
 
         @Override
         public Double lat() {
-          return status.equals("OK") ? location.getJsonNumber("lng").doubleValue() : 0;
+          return status.equals("OK") ? location.getJsonNumber("lng").doubleValue() : 0d;
         }
 
         @Override
@@ -130,8 +130,34 @@ public class App {
       if (!location.status().equals("FOUND") && !location.status().equals("NOT_FOUND")) {
         System.out.printf("Attempt %d resolving address %s failed with status %s... retrying\n",
             i + 1, address, location.status());
-        if (i++ == 5) {
-          return Optional.of(location);
+        if (i + 1 == 5) {
+          return Optional.of(new GeoAddressLocation() {
+
+            @Override
+            public JsonObject locationJsonObj() {
+              return null;
+            }
+
+            @Override
+            public String status() {
+              return "NOT_FOUND";
+            }
+
+            @Override
+            public Double lng() {
+              return 0d;
+            }
+
+            @Override
+            public Double lat() {
+              return 0d;
+            }
+
+            @Override
+            public String address() {
+              return location.address();
+            }
+          });
         } else if (location.status().equals("OVER_QUERY_LIMIT")) {
           System.out.println("Over Query Limit resetting count.. sleeping it off!");
           i = 0;
